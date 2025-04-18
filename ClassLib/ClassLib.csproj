@@ -8,4 +8,8 @@
     <RootNamespace>IlernaProject.ClassLib</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="xFFmpeg.NET" Version="7.2.0" />
+  </ItemGroup>
+
 </Project>
