@@ -2,3 +2,4 @@ ClassLib/obj
 ClassLib/bin
 Tests/obj
 Tests/bin
+.env
