@@ -51,4 +51,11 @@ public static class TestsConfig
     /// It is a subdirectory of the TestsDataDirectory.
     /// </summary>
     public static string TestsDataBaseDirectory => Path.Combine(TestsDataDirectory, "base");
+
+    /// <summary>
+    /// Path to the FFMpeg executable.
+    /// This path is set using the environment variable "FfmpegPath".
+    /// If the environment variable is not set, an exception is thrown.
+    /// </summary>
+    public static string FfmpegPath => Environment.GetEnvironmentVariable("FfmpegPath") ?? throw new SettingsException("FfmpegPath not set in .env file");
 }

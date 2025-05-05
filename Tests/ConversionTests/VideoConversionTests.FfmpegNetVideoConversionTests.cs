@@ -9,8 +9,6 @@ namespace IlernaProject.Tests.ConversionTests;
 [TestClass]
 public class FfmpegNetVideoConversionTests : VideoConversionTests
 {
-    private readonly string _ffmpegPath = "/usr/bin/ffmpeg";
-
     /// <inheritdoc/>
     [TestMethod]
     public override async Task TestConvertAsync_ValidInputFile_CreatesOutputFile()
@@ -18,7 +16,7 @@ public class FfmpegNetVideoConversionTests : VideoConversionTests
         // Arrange
         string inputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "test.mp4");
         string outputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "output.avi");
-        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(_ffmpegPath);
+        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(TestsConfig.FfmpegPath);
 
         // Act
         var result = await ffmpegNetConverter.ConvertAsync(inputFilePath, outputFilePath, CancellationToken.None);
@@ -35,7 +33,7 @@ public class FfmpegNetVideoConversionTests : VideoConversionTests
         // Arrange
         string inputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "nonExistentFile.mp4");
         string outputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "output.avi");
-        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(_ffmpegPath);
+        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(TestsConfig.FfmpegPath);
 
         // Act
         var result = await ffmpegNetConverter.ConvertAsync(inputFilePath, outputFilePath, CancellationToken.None);
@@ -52,7 +50,7 @@ public class FfmpegNetVideoConversionTests : VideoConversionTests
         string inputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "test.mp4");
         string outputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "output.avi");
         File.Copy(inputFilePath, outputFilePath, true);
-        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(_ffmpegPath);
+        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(TestsConfig.FfmpegPath);
 
         // Act
         var result = await ffmpegNetConverter.ConvertAsync(inputFilePath, outputFilePath, CancellationToken.None);
@@ -68,7 +66,7 @@ public class FfmpegNetVideoConversionTests : VideoConversionTests
         // Arrange
         string inputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "test.mp4");
         string outputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "output.nonExistentFormat");
-        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(_ffmpegPath);
+        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(TestsConfig.FfmpegPath);
 
         // Act
         var result = await ffmpegNetConverter.ConvertAsync(inputFilePath, outputFilePath, CancellationToken.None);
@@ -84,7 +82,7 @@ public class FfmpegNetVideoConversionTests : VideoConversionTests
         // Arrange
         string inputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "test.mp4");
         string outputFilePath = Path.Combine(TestsConfig.TestsDataTempDirectory, "output.avi");
-        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(_ffmpegPath);
+        IVideoConverter ffmpegNetConverter = new FfmpegNetConverter(TestsConfig.FfmpegPath);
 
         // Act
         using var cancellationTokenSource = new CancellationTokenSource();
