@@ -7,7 +7,7 @@ namespace IlernaProject.ClassLib.Converters;
 /// Implementation of IVideoConverter using FFmpeg.NET library.
 /// Repository: https://github.com/cmxl/FFmpeg.NET
 /// </summary>
-public class FfmpegNetConverter : IVideoConverter, IAudioConverter
+public class FfmpegNetConverter : IVideoConverter, IAudioConverter, IImageConverter
 {
     private readonly Engine _ffmpegEngine;
 
@@ -90,6 +90,12 @@ public class FfmpegNetConverter : IVideoConverter, IAudioConverter
     }
 
     async Task<OperationResult> IAudioConverter.ConvertAsync(string inputFilePath, string outputFilePath, CancellationToken cancellationToken)
+    {
+        // Reuse the same conversion logic as in IVideoConverter
+        return await ((IVideoConverter)this).ConvertAsync(inputFilePath, outputFilePath, cancellationToken);
+    }
+
+    async Task<OperationResult> IImageConverter.ConvertAsync(string inputFilePath, string outputFilePath, CancellationToken cancellationToken)
     {
         // Reuse the same conversion logic as in IVideoConverter
         return await ((IVideoConverter)this).ConvertAsync(inputFilePath, outputFilePath, cancellationToken);
