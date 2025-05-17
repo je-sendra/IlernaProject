@@ -57,5 +57,12 @@ public static class TestsConfig
     /// This path is set using the environment variable "FfmpegPath".
     /// If the environment variable is not set, an exception is thrown.
     /// </summary>
-    public static string FfmpegPath => Environment.GetEnvironmentVariable("FfmpegPath") ?? throw new SettingsException("FfmpegPath not set in .env file");
+    public static string FfmpegPath => Environment.GetEnvironmentVariable("FfmpegPath") ?? throw new SettingsException("FfmpegPath not set in .env file"); 
+
+    /// <summary>
+    /// Path to the Youtube video URL used for testing Youtube video downloading.
+    /// This URL is set using the environment variable "YoutubeVideoUrl".
+    /// If the environment variable is not set, an exception is thrown.
+    /// </summary>
+    public static string YoutubeVideoUrl => Environment.GetEnvironmentVariable("YoutubeVideoUrl") ?? throw new SettingsException("YoutubeVideoUrl not set in .env file");
 }
